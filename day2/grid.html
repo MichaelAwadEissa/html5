@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 | Grid</title>
+    <style>
+        #container {
+            display: grid;
+            grid-template-columns: 200px 200px 200px;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+
+            height: 75vh;
+        }
+
+        .header {
+            background-color: gray;
+
+            grid-column: 1/5;
+            grid-row: 1/2;
+        }
+
+        .nav {
+            background-color: aqua;
+            grid-column: 1/5;
+            grid-row: 2/3;
+        }
+
+        .section1 {
+            background-color: aliceblue;
+            grid-column: 1/4;
+            grid-row: 2/5;
+        }
+
+        .section2 {
+            background-color: beige;
+            grid-column: 1/4;
+            grid-row: 3/5;
+        }
+
+        .footer {
+            background-color: darkgray;
+            grid-column: 1/5;
+            grid-row: 5/6;
+        }
+
+        .aside {
+            background-color: lightblue;
+            grid-column: 4/5;
+            grid-row: 2/5;
+        }
+
+        ul {
+            height: 100%;
+            display: flex;
+            list-style: none;
+            flex-direction: column;
+            align-items: start;
+            justify-content: space-evenly;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <header class="header">header</header>
+        <nav class="nav">nav</nav>
+        <section class="section1">section1</section>
+        <section class="section2">section2</section>
+        <aside class="aside">
+            <ul class="aside-container">
+                <li>Home</li>
+                <li>About</li>
+                <li>Contact</li>
+                <li>Services</li>
+            </ul>
+        </aside>
+        <footer class="footer">footer</footer>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            position: relative;
+            /* Added position property */
+            animation: div-animation 4s;
+            animation-iteration-count: 2;
+
+            animation-timing-function: ease;
+            /* animation-direction: alternate-reverse; */
+        }
+
+        :root {
+            --animation-duration: 4s;
+        }
+
+        div:hover {
+            transform: scale(1.5) rotate(45deg);
+            background-color: red;
+            transition: all 4s;
+        }
+
+        @keyframes div-animation {
+            0% {
+                top: 0;
+                left: 0;
+            }
+
+            /* 
+            25% {
+                top: 0;
+                left: 300px;
+                transform: scale(0);
+            }
+
+            50% {
+                top: 300px;
+                left: 300px;
+            } */
+
+            100% {
+                top: 0;
+                left: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colored Stripes</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            height: 97vh;
+            border: 2px solid red;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: start;
+            flex-wrap: wrap-reverse;
+            align-content: space-between;
+        }
+
+
+        .container>div {
+            /* flex: 1; */
+            width: 100px;
+            height: 100px;
+        }
+
+        .stripe.red {
+            background-color: red;
+        }
+
+        .stripe.pink {
+            background-color: pink;
+        }
+
+        .stripe.yellow {
+            background-color: yellow;
+        }
+
+        .stripe.green {
+            background-color: green;
+        }
+
+        .stripe.purple {
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="stripe red"></div>
+        <div class="stripe pink"></div>
+        <div class="stripe yellow"></div>
+        <div class="stripe green"></div>
+        <div class="stripe purple"></div>
+        <div class="stripe red"></div>
+        <div class="stripe pink"></div>
+        <div class="stripe yellow"></div>
+        <div class="stripe green"></div>
+        <div class="stripe purple"></div>
+        <div class="stripe red"></div>
+        <div class="stripe pink"></div>
+        <div class="stripe yellow"></div>
+        <div class="stripe green"></div>
+        <div class="stripe purple"></div>
+        <div class="stripe red"></div>
+        <div class="stripe pink"></div>
+        <div class="stripe yellow"></div>
+        <div class="stripe green"></div>
+        <div class="stripe purple"></div>
+        <div class="stripe pink"></div>
+        <div class="stripe yellow"></div>
+        <div class="stripe green"></div>
+        <div class="stripe purple"></div>
+    </div>
+</body>
+
+</html>
