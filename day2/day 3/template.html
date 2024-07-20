@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Player</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            width: 800px;
+            height: 500px;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+            padding: 10px;
+            background-color: #eee;
+        }
+
+        .control-button {
+            margin: 5px 0;
+            padding: 10px;
+            background-color: #ffcccc;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .video-display {
+            flex: 1;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        video {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="controls">
+            <button id="play-pause-btn" class="control-button">play</button>
+            <button id="video-size" class="control-button">Video Size</button>
+            <button id="volume" class="control-button">Volume</button>
+            <button id="mute-loop" class="control-button">Mute | Loop</button>
+            <input type="range" id="seekbar" class="control-button">
+            <button id="forward-backward" class="control-button">>> | <<< /button>
+                    <button id="slowmotion" class="control-button">SlowMotion</button>
+        </div>
+        <div class="video-display">
+            <video id="myvideo" src="videoplayback.mp4" controls></video>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            let myVideo = document.getElementById('myvideo');
+            let playPauseBtn = document.getElementById('play-pause-btn');
+
+            playPauseBtn.addEventListener('click', function () {
+                if (myVideo.paused) {
+                    myVideo.play();
+                    playPauseBtn.textContent = 'pause';
+                } else {
+                    myVideo.pause();
+                    playPauseBtn.textContent = 'play';
+                }
+            });
+
+            document.getElementById('video-size').addEventListener('click', function () {
+                if (myVideo.style.width === '600px') {
+                    myVideo.style.width = '800px';
+                } else {
+                    myVideo.style.width = '600px';
+                }
+            });
+
+            // Add event listeners for other controls as needed
+        });
+    </script>
+</body>
+
+</html>

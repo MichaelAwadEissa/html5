@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+
+<body>
+    <!-- <video src="1.mp4" controls poster="1.jpeg" autoplay muted></video> -->
+    <section id="mainwrapper">
+        <section id="controlscontainer">
+            <details>
+                <summary>play | pause</summary>
+                <input type="button" value="play" id="play-pause-btn">
+            </details>
+            <details>
+                <summary>Video Size</summary>
+                <select id="video-size">
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                    <option value="fullscreen">Fullscreen</option>
+                </select>
+            </details>
+            <details>
+                <input type="range">
+            </details>
+        </section>
+    </section>
+
+    <video id="myvideo" src="videoplayback.mp4" poster="../image.png" controls muted></video>
+
+    <script>
+        let myvideo = document.getElementById("myvideo");
+        let playPauseBtn = document.getElementById("play-pause-btn");
+        let videoSizeSelect = document.getElementById("video-size");
+
+        playPauseBtn.addEventListener("click", function () {
+            if (myvideo.paused) {
+                myvideo.play();
+                playPauseBtn.value = "pause";
+            } else {
+                myvideo.pause();
+                playPauseBtn.value = "play";
+            }
+        });
+
+        videoSizeSelect.addEventListener("change", function () {
+            let size = videoSizeSelect.value;
+            switch (size) {
+                case "small":
+                    myvideo.width = 320;
+                    myvideo.height = 180;
+                    break;
+                case "medium":
+                    myvideo.width = 640;
+                    myvideo.height = 360;
+                    break;
+                case "large":
+                    myvideo.width = 1280;
+                    myvideo.height = 720;
+                    break;
+                case "fullscreen":
+                    myvideo.width = window.innerWidth;
+                    myvideo.height = window.innerHeight;
+                    break;
+            }
+        });
+    </script>
+</body>
+
+</html>

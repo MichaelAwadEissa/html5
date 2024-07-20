@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JS APIs | 04 - Canvas</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <canvas style="background-color: aqua" width="500" height="250"></canvas>
+    <script>
+        let canvas = document.querySelector('canvas');
+        let ctx = canvas.getContext('2d');
+
+        ctx.fillStyle = 'red';
+        ctx.fillRect(20, 20, 100, 50);
+
+        ctx.fillStyle = 'green';
+        ctx.fillRect(100, 100, 100, 50);
+
+        ctx.lineTo(300, 50);
+        ctx.lineTo(360, 150);
+        ctx.lineTo(260, 200);
+
+        ctx.stroke();
+    </script>
+</body>
+
+</html>

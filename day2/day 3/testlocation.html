@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps Example</title>
+    <style>
+        /* Set the size of the div element that will contain the map */
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- The div element where the map will be displayed -->
+    <div id="map"></div>
+
+    <!-- Include the Google Maps JavaScript API -->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartN6g&callback=initMap"></script>
+
+    <script>
+        function initMap() {
+            const myLatLng = { lat: -25.363, lng: 131.044 };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: myLatLng,
+            });
+
+            new google.maps.Marker({
+                position: myLatLng,
+                map,
+                title: "Hello World!",
+            });
+        }
+
+        window.initMap = initMap;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .todolist {
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        #title {
+            font-size: 30px;
+            text-align: center;
+            color: brown;
+            margin-bottom: 20px;
+        }
+
+        #addTask {
+            border-radius: 6px;
+            background-color: gray;
+            text-align: center;
+            height: 30px;
+            width: 60px;
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+
+        #task {
+            border-radius: 5px;
+            margin-right: 10px;
+            width: 300px;
+            height: 30px;
+            padding-left: 10px;
+        }
+
+        #taskList {
+            padding: 0;
+        }
+
+        .header1 {
+            background-color: red;
+            color: white;
+            text-align: center;
+            border-radius: 2px;
+            padding: 10px 0;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: antiquewhite;
+            margin-bottom: 5px;
+            padding: 10px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li button {
+            background-color: red;
+            color: white;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        li span {
+            flex-grow: 1;
+            padding: 0 10px;
+        }
+
+        li input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        li.completed span {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="todolist">
+        <h1 id="title">Todo List</h1>
+        <input type="text" id="task" placeholder="Add new task">
+        <button onclick="addTask()" id="addTask">Add</button>
+        <div class="header1">
+            <span class="header">Done</span>
+            <span class="header">Task</span>
+            <span class="header">Delete</span>
+        </div>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        let taskInput = document.getElementById("task");
+        let taskButton = document.getElementById("addTask");
+        let taskList = document.getElementById("taskList");
+        let taskText = taskInput.value.trim();
+
+        function addTask() {
+            if (taskText) {
+                let listItem = document.createElement("li");
+
+                let taskCheckbox = document.createElement("input");
+                taskCheckbox.type = "checkbox";
+                taskCheckbox.addEventListener('change', function () {
+                    listItem.classList.toggle('completed');
+                });
+
+                let taskSpan = document.createElement("span");
+                taskSpan.textContent = taskText;
+
+                let deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.addEventListener('click', function () {
+                    taskList.removeChild(listItem);
+                });
+
+                function saveTasks() {
+                    let tasks = [];
+                    taskList.querySelectorAll("li").forEach(function (listItem) {
+                        let isCompleted = listItem.querySelector("input[type='checkbox']").checked;
+                        tasks.push({ text: taskText, completed: isCompleted });
+                    });
+                    localStorage.setItem("tasks", JSON.stringify(tasks));
+                }
+
+
+                function loadTasks() {
+                    let savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+                    savedTasks.forEach(function (task) {
+                        let listItem = document.createElement("li");
+
+                        let taskCheckbox = document.createElement("input");
+                        taskCheckbox.type = "checkbox";
+                        taskCheckbox.checked = task.completed;
+                        taskCheckbox.addEventListener('change', function () {
+                            listItem.classList.toggle('completed');
+                            saveTasks();
+                        });
+
+                        let taskSpan = document.createElement("span");
+                        taskSpan.textContent = task.text;
+
+                        let deleteButton = document.createElement("button");
+                        deleteButton.textContent = "Delete";
+                        deleteButton.addEventListener('click', function () {
+                            taskList.removeChild(listItem);
+                            saveTasks();
+                        });
+
+                        if (task.completed) {
+                            listItem.classList.add('completed');
+                        }
+
+                        listItem.appendChild(taskCheckbox);
+                        listItem.appendChild(taskSpan);
+                        listItem.appendChild(deleteButton);
+
+                        taskList.appendChild(listItem);
+                    });
+                }
+
+
+
+
+
+
+
+
+                listItem.appendChild(taskCheckbox);
+                listItem.appendChild(taskSpan);
+                listItem.appendChild(deleteButton);
+
+                taskList.appendChild(listItem);
+
+                taskInput.value = '';
+                taskInput.focus();
+            }
+        }
+
+        taskButton.addEventListener('click', addTask);
+        taskInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                addTask();
+            }
+        });
+    </script>
+</body>
+
+</html>
